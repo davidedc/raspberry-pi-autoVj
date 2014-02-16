@@ -9,6 +9,8 @@ Press esc to exit, and press space to take fantastic screenshots (will end up in
 
 AutoVJ works by simply modifying the properties of two primitives (a cube and a background plane). Properties can be: the shader, the scale of the shader, the scale of the object, the rotation speed, the palette. Some extra effects kick-in randomly such as flashing, inverting the colors, and changing the orientation of the gradients.
 
+Status of code: the code was using for prototyping something else, so you'll see a lot of weird code in weird places doing nothing. (given the time, some refactoring would be in order, and also checking that it still works with the latest version of pi3d).
+
 Some animated gifs and screenshots here below. Gaaaaa don't we all love animated gifs!
 
 ![My image](https://github.com/davidedc/raspberry-pi-autoVj/raw/master/some%20gifs%20for%20your%20pleasure/2014-02-16 19_34_15.gif)
