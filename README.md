@@ -5,7 +5,7 @@ Automatic motion graphics for Raspberry pi using pi3d framework.
 
 Just download pi3d https://github.com/tipam/pi3d , add this project in a folder under the main directory (pi3d-master). Then run Geany (Programming -> Genie) , load the file starting with "GradientColor..." and press the "gears" icon.
 
-AutoVJ works by simply modifying the properties of two primitives (a cube and a background plane). Properties can be the shader, the scale of the shader, the scale of the object, and the rotation speed. Some extra effects kick-in randomly.
+AutoVJ works by simply modifying the properties of two primitives (a cube and a background plane). Properties can be: the shader, the scale of the shader, the scale of the object, the rotation speed, the palette. Some extra effects kick-in randomly such as flashing, inverting the colors, and changing the orientation of the gradients.
 
 ![My image](https://github.com/davidedc/raspberry-pi-autoVj/raw/master/some%20gifs%20for%20your%20pleasure/2014-02-16 19_34_15.gif)
 ![My image](https://github.com/davidedc/raspberry-pi-autoVj/raw/master/some%20gifs%20for%20your%20pleasure/2014-02-16 19_39_02.gif)
