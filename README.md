@@ -3,7 +3,7 @@ Raspberry-pi-autoVj
 
 Automatic motion graphics for Raspberry pi using pi3d framework.
 
-Just download pi3d https://github.com/tipam/pi3d , add this project in a folder under the main directory (pi3d-master). Then run Geany (Programming -> Genie) , load the file starting with "GradientColor..." and press the "gears" icon.
+Just download pi3d https://github.com/tipam/pi3d , add this project in a folder under the main directory (pi3d-master). Then run Geany (Programming -> Geany) , load the file starting with "GradientColor..." and press the "gears" icon.
 
 Press esc to exit, and press space to take fantastic screenshots (will end up in the screenshots directory).
 
