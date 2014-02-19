@@ -65,7 +65,10 @@ class AnimationState(object):
     self.millisDelta = int(curTime - self.millis)
     self.millis = curTime
     self.frameCount += 1
-    
+
+  def randomiseSeveral(self, num=20):
+    for i in range(num):
+      self.randomiseOne()
   
   # you can also make a method to undo / redo
   # you can make a method to mark one or two states and periodically

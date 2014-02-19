@@ -12,9 +12,9 @@ which you might need to alter if you did anything non-standard.
 Then run Geany (Programming -> Geany) load the file  AutoVJ.py and press the
 "gears" icon to run.
 
-Press esc to exit, and press space to take fantastic screenshots (will end
-up in the screenshots directory). TODO space will be used for interactive
-control
+Press esc to exit.
+
+Press space to 'bump' the random effect changer.
 
 AutoVJ works by simply modifying the properties of two primitives (a cube
 and a background plane). Properties can be: the shader, the scale of the
