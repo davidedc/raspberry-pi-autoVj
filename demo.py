@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(1, '/home/patrick/pi3d')
+sys.path.insert(1, '/home/pi/pi3d')
 # this is the path to where ever pi3d has been extracted on your system
 # if you have installed pi3d as well then inserting this at [1] will means
 # this version will be found first.
