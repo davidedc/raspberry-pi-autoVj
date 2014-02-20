@@ -54,8 +54,8 @@ class PaletteTypes(object):
 #40
     [Colors.deepTurquoise, Colors.white],
     [Colors.deepTurquoise, Colors.black],
-    [Colors.white, Colors.white],
+    #[Colors.white, Colors.white],
     [Colors.white, Colors.black],
-    [Colors.black, Colors.black],
+    #[Colors.black, Colors.black],
   ]
   

@@ -82,11 +82,11 @@ class Geometry(object):
 
     geometry.position(0.0, 0.0, 400.0 if fground else 900.1)
 
+    scale = ani_state.state[state_part][ani_state.geometry][ani_state.scale]
     if fground:
-      scale = ani_state.state[state_part][ani_state.geometry][ani_state.scale]
-      scale = 1 + int(scale % 5) # from 0,10 to 1,5
+      scale = 1.0 + int(scale % 5) # from 0,10 to 1,5
     else:
-      scale = 20.0
+      scale = 16.0 + int(scale % 10)
     geometry.scale(scale, scale, scale)
 
     shaderType = (int(
@@ -119,16 +119,16 @@ class Geometry(object):
         col1,col2 = col2,col1
     elif paletteAnimationType == 1:
       if ani_state.frameCount % 8 == 0:
-        col1[0] = col1[0]/2
-        col1[1] = col1[1]/2
-        col1[2] = col1[2]/2
+        col1[0] = col1[0]*2
+        col1[1] = col1[1]*2
+        col1[2] = col1[2]*2
         col2[0] = col2[0]/2
         col2[1] = col2[1]/2
         col2[2] = col2[2]/2
       elif ani_state.frameCount % 8 == 4:
-        col1[0] = col1[0]*2
-        col1[1] = col1[1]*2
-        col1[2] = col1[2]*2
+        col1[0] = col1[0]/2
+        col1[1] = col1[1]/2
+        col1[2] = col1[2]/2
         col2[0] = col2[0]*2
         col2[1] = col2[1]*2
         col2[2] = col2[2]*2
@@ -142,8 +142,8 @@ class Geometry(object):
         col2[2] = uniform(0,1)
     elif paletteAnimationType == 3:
       if ani_state.frameCount % 8 == 0:
-        col1=  [1.0,1.0,1.0]
-        col2=  [1.0,1.0,1.0]
+        col1=  [0.9,1.0,1.0]
+        col2=  [1.0,0.9,1.0]
 
     geometry.set_custom_data(48, col1)
     geometry.set_custom_data(51, col2)
@@ -151,7 +151,7 @@ class Geometry(object):
     shaderScale = ani_state.state[state_part][ani_state.shader][ani_state.scale] % 10.0
     # with the dots shader, too few dots don't look super-cool, so adjust
     if shaderType ==   ShaderTypes.dots:
-      shaderScale = 2*(10+shaderScale)
+      shaderScale = 2 * (10.0 + shaderScale)
       
     i = int(ani_state.state[state_part][ani_state.shader][ani_state.petalSmooth])
     petalSmooth = ShaderTypes.petalTable[i % len(ShaderTypes.petalTable)]
