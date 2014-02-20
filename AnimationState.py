@@ -5,7 +5,7 @@
 from random import randrange, uniform
 import time
 
-import Presets
+from Presets import preset
 
 class AnimationState(object):
   
@@ -62,19 +62,6 @@ class AnimationState(object):
             3 -> flash, col1 and col2 to white
   """
 
-############### geometery       ### shader          ### palette
-# 1=>preset[0] 2=>preset[1] etc
-  preset = [
-            [[ [0, 1, 2, 0, 0, 0], [1, 6, 0, 0, 2, 2], [0, 0, 0, 0, 0, 0]],
-            [ [0, 2, 4, 4, 0, 0], [0, 1, 0, 0, 4, 4], [6, 0, 2, 0, 0, 0]]],
-            
-            [[ [0, 1, 5, 0, 0, 0], [2, 6, 0, 0, 0, 4], [0, 0, 3, 0, 0, 0]],
-            [ [0, 2, 4, 4, 0, 0], [2, 1, 0, 0, 4, 4], [25, 0, 3, 0, 0, 0]]],
-            
-            [[ [0, 1, 5, 0, 0, 0], [3, 6, 0, 0, 0, 4], [0, 0, 1, 0, 0, 0]],
-            [ [0, 2, 4, 4, 0, 0], [3, 1, 0, 0, 4, 4], [32, 0, 1, 0, 0, 0]]]
-          ]
-
   def randomiseOne(self):
     dim1 = randrange(0, 3)
     dim2 = randrange(0, 3)
@@ -88,11 +75,11 @@ class AnimationState(object):
     self.frameCount += 1
 
   def jumpToPreset(self, num=0):
-    num = (num - 1) % len(self.preset)
+    num = (num - 1) % len(preset)
     for i in range(2):
       for j in range(3):
         for k in range(6):
-          self.state[i][j][k] = self.preset[num][i][j][k]
+          self.state[i][j][k] = preset[num][i][j][k]
   
   # you can also make a method to undo / redo
   # you can make a method to mark one or two states and periodically
