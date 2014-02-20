@@ -56,4 +56,6 @@ while DISPLAY.loop_running():
     break
   elif theKey == 32: # space
     #pi3d.screenshot("screenshots/" + str(animation_state.frameCount)+".png")
-    animation_state.randomiseSeveral(40)
+    pass
+  elif theKey >= 48 and theKey <= 57:
+    animation_state.jumpToPreset(theKey)

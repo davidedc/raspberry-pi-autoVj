@@ -44,13 +44,13 @@ class Geometry(object):
     elif speedType == 2:
       speedMillisDivider = -100
     elif speedType == 3:
-      speedMillisDivider = -1000
+      speedMillisDivider = -100000
     elif speedType == 4:
-      speedMillisDivider = 1
+      speedMillisDivider = 100
     elif speedType == 5:
       speedMillisDivider = 10
     elif speedType == 6:
-      speedMillisDivider = 100
+      speedMillisDivider = 1
     animationSpeed = ani_state.millisDelta / speedMillisDivider
     if not fground:
       # the background should move slower to give a parallax effect
@@ -99,16 +99,13 @@ class Geometry(object):
     # use the palette scale to invert the colors
     paletteInvert = (int(
         ani_state.state[state_part][ani_state.palette][ani_state.scale]
-        ))% 2
+        )) % 2
     paletteEntry =   PaletteTypes.paletteTable[
       (int(
-        ani_state.state
-          [ani_state.midground]
-          [ani_state.palette]
-          [ani_state.theType]
-        ))% len(  PaletteTypes.paletteTable)]
-    col1 = paletteEntry[0]
-    col2 = paletteEntry[1]
+        ani_state.state[ani_state.midground][ani_state.palette][ani_state.theType]
+        )) % len(PaletteTypes.paletteTable)]
+    col1 = [paletteEntry[0][0], paletteEntry[0][1], paletteEntry[0][1]]
+    col2 = [paletteEntry[1][0], paletteEntry[1][1], paletteEntry[1][1]]
     if paletteInvert:
       col1,col2 = col2,col1
 
@@ -116,7 +113,7 @@ class Geometry(object):
     # swap, shades, random, flash
     paletteAnimationType = (int(
         1.5 * ani_state.state[state_part][ani_state.palette][ani_state.animationType]
-        ))
+        )) % 4
     if paletteAnimationType == 0:
       if ani_state.frameCount % 8 == 0:
         col1,col2 = col2,col1
@@ -151,9 +148,7 @@ class Geometry(object):
     geometry.set_custom_data(48, col1)
     geometry.set_custom_data(51, col2)
 
-    shaderScale = int(
-        ani_state.state[state_part][ani_state.shader][ani_state.scale]
-        )
+    shaderScale = ani_state.state[state_part][ani_state.shader][ani_state.scale] % 10.0
     # with the dots shader, too few dots don't look super-cool, so adjust
     if shaderType ==   ShaderTypes.dots:
       shaderScale = 2*(10+shaderScale)
