@@ -1,6 +1,6 @@
 precision mediump float;
 
-varying vec2 texcoordout;
+varying vec2 uv;
 varying float dist;
 
 uniform sampler2D tex0;
@@ -12,41 +12,21 @@ uniform vec3 unif[20];
 //uniform float fogalpha => unif[5][1]
 
 void main(void) {
-  float ri =  unif[16][0];
-  float gi =  unif[16][1];
-  float bi =  unif[16][2];
-  float rf =  unif[17][0];
-  float gf =  unif[17][1];
-  float bf =  unif[17][2];
+  vec3 rgbi =  unif[16];
+  vec3 rgbf =  unif[17];
+
   float dotsCount =  unif[18][0];
-  vec2 uv = texcoordout;
+  float petal = unif[18][1];
+  float power = unif[18][2];
+  //float petal = 0.2;
+  //float power = -1.3;
   float f = smoothstep(0.0,1.0,uv.y);
-  //gl_FragColor = vec4(f,f,f,1.0); // ------ combine using factors
 
-  //float ffact = smoothstep(unif[5][0]/3.0, unif[5][0], dist); // ------ smoothly increase fog between 1/3 and full fogdist
-  //gl_FragColor = texc ; // ------ combine using factors
+  vec2 p = fract(uv * dotsCount) - vec2(0.5);
 
+  float col = step(0.36, length(p) * pow(fract((500.0 + dist) * 0.01 * petal * atan(p.y / p.x)), power));
 
-
-	float time = 1.0;
-	vec2 mouse = vec2(1.0,1.0);
-	vec2 resolution = vec2(1.0,1.0);
-	vec2 p = ( texcoordout.xy  )  * dotsCount;
-	p.x *= (resolution.x / resolution.y);
-	//Write your Code here (Begin)
-	
-	
-	vec3 col = vec3(smoothstep(0.37, 0.35, length(fract(p.xy) - 0.5)));
-	
-    vec4 texc = vec4(col.r*ri + (1.0-col.r)*rf,col.g*gi + (1.0-col.g)*gf,col.b*bi + (1.0-col.b)*bf,1.0); // ------ material or basic colour from texture
-	
-  if (texc.a < unib[0][2]) discard; // ------ to allow rendering behind the transparent parts of this object
-	
-	gl_FragColor = vec4( texc );
-	
-	
-
-
+  gl_FragColor = vec4(mix(rgbf, rgbi, col), 1.0);
 }
 
 
