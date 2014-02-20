@@ -44,7 +44,7 @@ startSlideOutMS = 0
 while DISPLAY.loop_running():
 
   animation_state.updateTimeAndFrameCount()
-  if (animation_state.frameCount % 5) == 0:
+  if (animation_state.frameCount % 10) == 0:
     animation_state.randomiseOne()
   background.draw(animation_state)
   midground.draw(animation_state)
