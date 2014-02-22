@@ -20,7 +20,7 @@ void main(void) {
   f = step(0.5, f);
 
   gl_FragColor = vec4(mix(rgbf, rgbi, f), 1.0);
-  //if (length(gl_FragColor) < 0.25) discard;
+  if (gl_FragColor.r < 0.0 || gl_FragColor.g < 0.0 || gl_FragColor.b < 0.0) discard;
 }
 
 

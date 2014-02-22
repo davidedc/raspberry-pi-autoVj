@@ -24,6 +24,7 @@ void main(void) {
   float col = step(0.36, length(p) * pow(fract((1000.0 + dist) * 0.005 * petal * atan(p.y / p.x)), power));
 
   gl_FragColor = vec4(mix(rgbf, rgbi, col), 1.0);
+  if (gl_FragColor.r < 0.0 || gl_FragColor.g < 0.0 || gl_FragColor.b < 0.0) discard;
 }
 
 

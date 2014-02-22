@@ -25,6 +25,7 @@ void main(void) {
   float col = smoothstep(0.35999 - smooth, 0.36 + smooth, fract(length(p) * ring));
 
   gl_FragColor = vec4(mix(rgbf, rgbi, col), 1.0);
+  if (gl_FragColor.r < 0.0 || gl_FragColor.g < 0.0 || gl_FragColor.b < 0.0) discard;
 }
 
 

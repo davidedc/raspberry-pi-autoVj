@@ -33,6 +33,7 @@ void main(void) {
               sin(p3.x * rndx) * 0.53335;
   vec3 rgbz = mix(rgbi, vec3(1.0 - rgbi.g, 1.0 - rgbi.b, 1.0 - rgbf.r), col1);
   gl_FragColor = vec4(mix(rgbf, rgbz, col2), 1.0);
+  if (gl_FragColor.r < 0.0 || gl_FragColor.g < 0.0 || gl_FragColor.b < 0.0) discard;
 }
 
 

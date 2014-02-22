@@ -84,7 +84,7 @@ class Geometry(object):
     if fground:
       scale = 1.0 + int(scale % 5) # from 0,10 to 1,5
     else:
-      scale = 16.0 + int(scale % 10)
+      scale = 15.0 + int(scale % 5)
     geometry.scale(scale, scale, scale)
 
     shaderType = (int(
