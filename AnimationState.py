@@ -18,7 +18,7 @@ class AnimationState(object):
   # the second is the aspect being defined
   # the third is the quality of the aspect
   
-  # initialise all to zero
+  # initialise all to zero (overwritten in __init__)
   # note that if you use this nested way of defining matrixes,
   # the first index length goes last and the last index length goes first.
   state = [[[0 for i in range(6)] for j in range(3)] for k in range(3)]
@@ -79,9 +79,14 @@ class AnimationState(object):
     for i in range(2):
       for j in range(3):
         for k in range(6):
-          self.state[i][j][k] = preset[num][i][j][k]
+          if preset[num][i][j][k] != None: #i.e. only overwrite part of state with values not None
+            self.state[i][j][k] = preset[num][i][j][k]
   
   # you can also make a method to undo / redo
   # you can make a method to mark one or two states and periodically
   # go back to those
  
+  def __init__(self):
+    self.jumpToPreset(num=0)
+    self.jumpToPreset(num=1)
+

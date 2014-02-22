@@ -13,5 +13,5 @@ from random import uniform
 class GeometryTypeSimpleCube(Geometry):
 
   def __init__(self, camera):
-    super(GeometryTypeSimpleCube, self).__init__(camera, pi3d.Cuboid(w=100, h=100, d=100, x=0, y=0, z=100.0))
+    super(GeometryTypeSimpleCube, self).__init__(camera, pi3d.Cuboid(w=50, h=50, d=50, x=0, y=0, z=200.0))
 

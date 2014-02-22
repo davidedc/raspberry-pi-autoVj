@@ -46,8 +46,8 @@ while DISPLAY.loop_running():
   animation_state.updateTimeAndFrameCount()
   if (animation_state.frameCount % 10) == 0:
     animation_state.randomiseOne()
-  background.draw(animation_state)
   midground.draw(animation_state)
+  background.draw(animation_state)
 
   theKey = mykeys.read()
   if theKey == 27: # esc
@@ -56,6 +56,9 @@ while DISPLAY.loop_running():
     break
   elif theKey == 32: # space
     #pi3d.screenshot("screenshots/" + str(animation_state.frameCount)+".png")
-    pass
+    #try to debug occasional cube disappearance
+    s = animation_state.state[1]
+    print("scale={:4.2f} spin_type={:4.2f} speed={:4.2f}".format(s[0][1] % 5, s[0][2] % 6, s[0][3] % 7))
+    print("shader={:4.2f} dotscale={:4.2f} petal={:4.2f} power={:4.2f} cols={:4.2f}".format(s[1][0] % 5, s[1][1], s[1][4] % 8, s[1][5] % 11, s[2][0]))
   elif theKey >= 48 and theKey <= 57:
-    animation_state.jumpToPreset(theKey)
+    animation_state.jumpToPreset(theKey - 48)

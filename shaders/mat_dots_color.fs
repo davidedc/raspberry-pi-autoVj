@@ -18,13 +18,10 @@ void main(void) {
   float dotsCount =  unif[18][0];
   float petal = unif[18][1];
   float power = unif[18][2];
-  //float petal = 0.2;
-  //float power = -1.3;
-  float f = smoothstep(0.0,1.0,uv.y);
 
   vec2 p = fract(uv * dotsCount) - vec2(0.5);
 
-  float col = step(0.36, length(p) * pow(fract((500.0 + dist) * 0.01 * petal * atan(p.y / p.x)), power));
+  float col = step(0.36, length(p) * pow(fract((1000.0 + dist) * 0.005 * petal * atan(p.y / p.x)), power));
 
   gl_FragColor = vec4(mix(rgbf, rgbi, col), 1.0);
 }

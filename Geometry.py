@@ -61,26 +61,24 @@ class Geometry(object):
         )) % 6 # spinZ, spinX, spinY, spinZSpinX, spinXSpinYSpinZ, noise
     if animationType == 0:
       geometry.rotateIncZ(animationSpeed)
-    elif animationType == 1 and fground:
+    elif animationType == 1:
       geometry.rotateIncX(animationSpeed)
-    elif animationType == 2 and fground:
+    elif animationType == 2:
       geometry.rotateIncY(animationSpeed)
     elif animationType == 3:
       geometry.rotateIncZ(animationSpeed)
-      if fground:
-        geometry.rotateIncX(animationSpeed)
+      #if fground:
+      geometry.rotateIncX(animationSpeed)
     elif animationType == 4:
-      if fground:
-        geometry.rotateIncX(animationSpeed)
-        geometry.rotateIncY(animationSpeed)
+      #if fground:
+      geometry.rotateIncX(animationSpeed)
+      geometry.rotateIncY(animationSpeed)
       geometry.rotateIncZ(animationSpeed)
     elif animationType == 5:
-      if fground:
-        geometry.rotateIncX(animationSpeed * uniform(-1, 1))
-        geometry.rotateIncY(animationSpeed * uniform(-1, 1))
+      #if fground:
+      geometry.rotateIncX(animationSpeed * uniform(-1, 1))
+      geometry.rotateIncY(animationSpeed * uniform(-1, 1))
       geometry.rotateIncZ(animationSpeed * uniform(-1, 1))
-
-    geometry.position(0.0, 0.0, 400.0 if fground else 900.1)
 
     scale = ani_state.state[state_part][ani_state.geometry][ani_state.scale]
     if fground:
@@ -109,11 +107,11 @@ class Geometry(object):
     if paletteInvert:
       col1,col2 = col2,col1
 
-    # goes from 0 to 15, only the first few do something
+    # goes from 0 to 5, only the first four do something
     # swap, shades, random, flash
     paletteAnimationType = (int(
-        1.5 * ani_state.state[state_part][ani_state.palette][ani_state.animationType]
-        )) % 4
+        ani_state.state[state_part][ani_state.palette][ani_state.animationType]
+        )) % 6 # i.e. if 4, 5 will have no effect
     if paletteAnimationType == 0:
       if ani_state.frameCount % 8 == 0:
         col1,col2 = col2,col1
@@ -148,10 +146,10 @@ class Geometry(object):
     geometry.set_custom_data(48, col1)
     geometry.set_custom_data(51, col2)
 
-    shaderScale = ani_state.state[state_part][ani_state.shader][ani_state.scale] % 10.0
+    shaderScale = int(ani_state.state[state_part][ani_state.shader][ani_state.scale]) % 10.0
     # with the dots shader, too few dots don't look super-cool, so adjust
-    if shaderType ==   ShaderTypes.dots:
-      shaderScale = 2 * (10.0 + shaderScale)
+    if shaderType == ShaderTypes.dots:
+      shaderScale = 2.0 * (10.0 + shaderScale)
       
     i = int(ani_state.state[state_part][ani_state.shader][ani_state.petalSmooth])
     petalSmooth = ShaderTypes.petalTable[i % len(ShaderTypes.petalTable)]
