@@ -6,10 +6,10 @@ import pi3d
 class ShaderTypes(object):
   
   # the palette names are just indexes into a table
-  dots =  0
+  dots = 0
   rings = 1
-  stripes =  2
-  gradient =  3
+  stripes = 2
+  gradient = 3
 
   shadersTable = []
   petalTable = []

@@ -18,15 +18,14 @@ void main(void) {
   float dotsCount =  unif[18][0];
   float smooth = unif[18][1];
   float ring = unif[18][2];
-  //float smooth = 0.2;
-  //float ring = -1.3;
-  float f = smoothstep(0.0,1.0,uv.y);
+  ring = sign(ring) * clamp(1.1, 5.0, abs(ring));
 
   vec2 p = fract(uv * dotsCount) - vec2(0.5);
 
   float col = smoothstep(0.35999 - smooth, 0.36 + smooth, fract(length(p) * ring));
 
   gl_FragColor = vec4(mix(rgbf, rgbi, col), 1.0);
+  if (gl_FragColor.r < 0.0 || gl_FragColor.g < 0.0 || gl_FragColor.b < 0.0) discard;
 }
 
 
